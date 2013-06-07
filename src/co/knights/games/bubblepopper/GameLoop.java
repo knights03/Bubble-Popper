@@ -16,9 +16,13 @@ import javafx.util.Duration;
 import co.knights.games.bubblepopper.data.PlayerData;
 
 /**
+ * Runs the Game Loop, 
  *
  * @author hope
  */
+
+// Only way i could make it thread friendly
+// Ideas are open
 public class GameLoop {
     private static Timeline gameLoop;
     private final int fps;
@@ -44,9 +48,10 @@ public class GameLoop {
 
                     @Override
                     public void handle(javafx.event.ActionEvent event) {
+                        // Everthing thing that needs to be listened to
                         pd.update();
                     }
-                }); // oneFrame
+                });
 
         // sets the game world's game loop (Timeline)
         setGameLoop(TimelineBuilder.create()

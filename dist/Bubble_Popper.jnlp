@@ -11,11 +11,11 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Bubble_Popper.jar" size="41193" download="eager" />
+    <jar href="Bubble_Popper.jar" size="41200" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Bubble_Popper" >
     <param name="requiredFXVersion" value="2.2+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="keystrokemotion.KeyStrokeMotion"  name="Bubble_Popper" />
+  <jfx:javafx-desc  width="800" height="600" main-class="co.knights.games.bubblepopper.BubblePopperMain"  name="Bubble_Popper" />
   <update check="background"/>
 </jnlp>

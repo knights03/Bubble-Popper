@@ -16,10 +16,14 @@ public class Listener {
 
     private EventHandler<KeyEvent> keyListener;
 
+    /**
+     * KeyListener Class....duh!
+     */
     public Listener() {
         keyListener = new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
+                // ends game
                 if (event.getCode() == KeyCode.ESCAPE) {
                     System.exit(0);
                 }
@@ -27,6 +31,10 @@ public class Listener {
         };
     }
 
+    /**
+     * 
+     * @return keyboard listener 
+     */
     public EventHandler<KeyEvent> getKeyListener() {
         return keyListener;
     }
