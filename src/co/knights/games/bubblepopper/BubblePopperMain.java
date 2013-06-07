@@ -27,6 +27,7 @@ import javafx.util.Duration;
 import co.knights.games.bubblepopper.bgs.BackGround;
 import co.knights.games.bubblepopper.data.PlayerData;
 import co.knights.games.bubblepopper.graphics.CircleTarget;
+import java.awt.HeadlessException;
 
 
 public class BubblePopperMain extends Application {
@@ -43,23 +44,18 @@ public class BubblePopperMain extends Application {
         running = true;
         state = State.LEVEL_ONE;
         l = new Listener();
-        Utils.WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        Utils.HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
         root = new Group();
-        primaryStage.setResizable(false);
-        primaryStage.setFullScreen(true);
-        Scene s = new Scene(root, Color.BLACK);
-        s.setOnKeyPressed(l.getKeyListener());
-        primaryStage.setScene(s);
-        primaryStage.setTitle(Utils.TITLE);
         lettersPane = new LettersPane();
+        target = new CircleTarget(25, 30);
         bg = new BackGround(1, root);
-        target = new CircleTarget(55);
-        loop = new GameLoop(60, root);
-        loop.beginGameLoop();
         
         
-        root.getChildren().addAll(target.drawLevelOne(), new PlayerData("erick"));
+        setGameSize();
+        initStage(primaryStage);
+        startGameLoop();
+        
+        
+        root.getChildren().addAll(new PlayerData("erick"));
     }
     
     
@@ -71,6 +67,25 @@ public class BubblePopperMain extends Application {
                 lettersPane.requestFocus();
             }
         });
+    }
+
+    private void startGameLoop() {
+        loop = new GameLoop(60, root);
+        loop.beginGameLoop();
+    }
+
+    private void initStage(Stage primaryStage) {
+        primaryStage.setResizable(false);
+        primaryStage.setFullScreen(true);
+        Scene s = new Scene(root, Color.BLACK);
+        s.setOnKeyPressed(l.getKeyListener());
+        primaryStage.setScene(s);
+        primaryStage.setTitle(Utils.TITLE);
+    }
+
+    private void setGameSize() throws HeadlessException {
+        Utils.WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        Utils.HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     }
 
     public static class LettersPane extends Region {

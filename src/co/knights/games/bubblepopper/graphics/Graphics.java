@@ -12,6 +12,6 @@ import javafx.scene.Parent;
  * @author hope
  */
 public interface Graphics {
-    public Group drawLevelOne();
+    public Group draw();
     
 }

@@ -4,13 +4,10 @@
  */
 package co.knights.games.bubblepopper.graphics;
 
-import javafx.event.EventHandler;
+import co.knights.games.bubblepopper.Utils;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import co.knights.games.bubblepopper.data.PlayerData;
 
 /**
  *
@@ -20,19 +17,25 @@ public abstract class Target extends Parent implements Graphics {
 
     private double size;
     private Color color;
-    private int health;
+    private double x, y;
     private boolean isAlive = true;
 
     public Target() {
     }
-    
-    
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
 
     public double getSize() {
         return size;
     }
 
-    public void setSize(double size) {
+    public final void setSize(double size) {
         this.size = size;
     }
 
@@ -45,14 +48,6 @@ public abstract class Target extends Parent implements Graphics {
     }
 
     public void setRoot(Group root) {
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
     }
 
     public boolean isIsAlive() {
