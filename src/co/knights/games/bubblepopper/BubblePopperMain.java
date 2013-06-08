@@ -27,7 +27,10 @@ import javafx.util.Duration;
 import co.knights.games.bubblepopper.bgs.BackGround;
 import co.knights.games.bubblepopper.data.PlayerData;
 import co.knights.games.bubblepopper.graphics.CircleTarget;
+import co.knights.games.bubblepopper.graphics.DropBlock;
 import java.awt.HeadlessException;
+import javafx.scene.DepthTest;
+import javafx.scene.shape.Circle;
 
 
 public class BubblePopperMain extends Application {
@@ -45,8 +48,10 @@ public class BubblePopperMain extends Application {
         state = State.LEVEL_ONE;
         l = new Listener();
         root = new Group();
+        root.setDepthTest(DepthTest.ENABLE);
+        DropBlock db = new DropBlock(30, Color.WHITE, 1);
         lettersPane = new LettersPane();
-        target = new CircleTarget(25, 30);
+        target = new CircleTarget(new Circle(), 25, 30);
         bg = new BackGround(1, root);
         
         
@@ -55,7 +60,7 @@ public class BubblePopperMain extends Application {
         startGameLoop();
         
         
-        root.getChildren().addAll(new PlayerData("erick"));
+        root.getChildren().addAll(db, new PlayerData("erick"));
     }
     
     
