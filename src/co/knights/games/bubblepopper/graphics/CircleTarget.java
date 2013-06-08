@@ -11,24 +11,25 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import co.knights.games.bubblepopper.Utils;
 import co.knights.games.bubblepopper.data.PlayerData;
+import javafx.scene.shape.Shape;
 
 /**
  *
  * @author hope
  */
-public class CircleTarget extends Target {
+public class CircleTarget implements Graphics{
 
-    private Circle target;
+    
     private int amount;
-    private static Circle[] cirSet;
     private static EventHandler<MouseEvent> die;
     private static Group root;
     private int maxSize;
+    
 
-    public CircleTarget(int amount, int maxSize) {
+    public CircleTarget(Circle shape, int amount, int maxSize) {
         this.amount = amount;
         this.maxSize = Utils.getRandomInt(maxSize);
-        target = new Circle(maxSize);
+        
 
     }
 
@@ -120,11 +121,12 @@ public class CircleTarget extends Target {
 //
     //}
     private void setStroke(Color strokeColor) {
-        target.setStroke(strokeColor);
     }
 
     @Override
     public Group draw() {
-        return null;
+        Group g = new Group();
+        return g;
     }
+
 }
