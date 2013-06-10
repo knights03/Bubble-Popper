@@ -1,20 +1,20 @@
 
 package co.knights.games.bubblepopper;
 
-import java.awt.Toolkit;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import co.knights.games.bubblepopper.bgs.BackGround;
 import co.knights.games.bubblepopper.data.PlayerData;
 import co.knights.games.bubblepopper.graphics.CircleTarget;
 import co.knights.games.bubblepopper.graphics.DropBlock;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.DepthTest;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 
 public class BubblePopperMain extends Application {
@@ -32,8 +32,8 @@ public class BubblePopperMain extends Application {
         l = new Listener();
         root = new Group();
         root.setDepthTest(DepthTest.ENABLE);
-        DropBlock db = new DropBlock(30, Color.WHITE, 1);
-        target = new CircleTarget(new Circle(), 25, 30);
+        DropBlock db = new DropBlock(100, Color.WHITE, 1);
+        target = new CircleTarget(25, 30);
         bg = new BackGround(1, root);
         
         
@@ -42,7 +42,7 @@ public class BubblePopperMain extends Application {
         startGameLoop();
         
         
-        root.getChildren().addAll(db, new PlayerData("erick"));
+        root.getChildren().addAll(target.draw(), new PlayerData("erick"));
     }
     
     
